@@ -31,9 +31,13 @@ jumper: do {
     if algorithms.contains("S") {
         print("Executing Selection Sort")
 
+        let start = DispatchTime.now()
+
         let res = arr.selectionSort {
             $0 > $1
         }
+        
+        print("Concluded the execution after: \(Double(DispatchTime.now().uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000)")
 
         try dumpToFile(res, with: file.replacingOccurrences(of: ".in", with: ".selection.out"))
     }
@@ -41,9 +45,13 @@ jumper: do {
     if algorithms.contains("I") {
         print("Executing Insertion Sort")
 
+        let start = DispatchTime.now()
+
         let res = arr.insertionSort {
             $0 > $1
         }
+        
+        print("Concluded the execution after: \(Double(DispatchTime.now().uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000)")
 
         try dumpToFile(res, with: file.replacingOccurrences(of: ".in", with: ".insertion.out"))
     }
