@@ -31,21 +31,21 @@ jumper: do {
     if algorithms.contains("S") {
         print("Executing Selection Sort")
 
-        // let res = arr.selectionSort {
-        //     $0 > $1
-        // }
+        let res = arr.selectionSort {
+            $0 > $1
+        }
 
-        try dumpToFile(arr, with: file.replacingOccurrences(of: ".in", with: ".selection.out"))
+        try dumpToFile(res, with: file.replacingOccurrences(of: ".in", with: ".selection.out"))
     }
 
     if algorithms.contains("I") {
         print("Executing Insertion Sort")
 
-        // let res = arr.insertionSort {
-        //     $0 > $1
-        // }
+        let res = arr.insertionSort {
+            $0 > $1
+        }
 
-        try dumpToFile(arr, with: file.replacingOccurrences(of: ".in", with: ".insertion.out"))
+        try dumpToFile(res, with: file.replacingOccurrences(of: ".in", with: ".insertion.out"))
     }
 } catch {
     print(error)
