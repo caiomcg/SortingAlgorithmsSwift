@@ -6,10 +6,8 @@ extension Array {
         for position in stride(from: 0, to: arraySize - 1, by: 1) {
             var lowerPosition = position;
 
-            for checkIfLower in stride(from: position + 1, to: arraySize, by: 1) {
-                if (comparator(copy[lowerPosition], copy[checkIfLower])) {
-                    lowerPosition = checkIfLower
-                }
+            for checkIfLower in stride(from: position + 1, to: arraySize, by: 1) where comparator(copy[lowerPosition], copy[checkIfLower]) {
+                lowerPosition = checkIfLower
             }
 
             copy.swapAt(position, lowerPosition)
