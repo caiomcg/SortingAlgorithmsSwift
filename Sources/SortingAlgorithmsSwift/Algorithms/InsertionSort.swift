@@ -1,18 +1,19 @@
 extension Array {
-    func insertionSort(with comparator: (Element, Element) -> Bool) -> [Element]{
+    func insertionSort(with comparator: (Element, Element) -> Bool) -> [Element] {
         var copy = self
         let arraySize = self.count
+        
+        for position in stride(from: 0, to: arraySize, by: 1) {
+            let currentValue = copy[position];
+            var swapperPosition = position - 1
 
-        for position in stride(from: 0, to: arraySize - 1, by: 1) {
-            var lowerPosition = position;
+            while swapperPosition >= 0 && comparator(copy[swapperPosition], currentValue) {
+                copy[swapperPosition + 1] = copy[swapperPosition]
 
-            for checkIfLower in stride(from: position + 1, to: arraySize, by: 1) {
-                if (comparator(copy[lowerPosition], copy[checkIfLower])) {
-                    lowerPosition = checkIfLower
-                }
+                swapperPosition -= 1
             }
 
-            copy.swapAt(position, lowerPosition)
+            copy[swapperPosition + 1] = currentValue
         }
         
         return copy
